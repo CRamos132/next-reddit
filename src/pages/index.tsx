@@ -1,12 +1,31 @@
-import { Box, Flex } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
+import { Box, Flex } from '@chakra-ui/react';
 import Button from '../components/atoms/Button';
 import TopNav from '../components/atoms/Header';
+import Post from '../components/molecules/Post';
 
 const Home: NextPage = () => {
-  const busca = () => {
-    fetch('https://www.reddit.com/r/javascript/hot.json')
-      .then((res) => res.json());
+  const [search, setSearch] = useState('hot');
+  const [last, setLast] = useState('');
+  const [posts, setPosts] = useState<any[]>([]);
+  // eslint-disable-next-line max-len
+  const busca = async () => fetch(`https://www.reddit.com/r/reactjs/${search}.json`)
+    .then((res) => res.json())
+    .then((data) => data);
+  useEffect(() => {
+    busca().then((data) => {
+      setLast(data.data.after);
+      setPosts(data.data.children);
+    });
+  }, [search]);
+  const loadMore = async () => {
+    // eslint-disable-next-line max-len
+    const newPosts = await fetch(`https://www.reddit.com/r/reactjs/${search}.json?after=${last}`)
+      .then((res) => res.json())
+      .then((data) => data);
+    const appendedPosts = [...posts, ...newPosts.data.children];
+    setPosts(appendedPosts);
   };
   return (
     <Box width="100%">
@@ -19,35 +38,36 @@ const Home: NextPage = () => {
         marginY="21px"
         marginX="auto"
       >
-        <Button colorScheme="primary" onClick={busca}>
+        <Button
+          colorScheme={search === 'hot' ? 'primary' : 'gray'}
+          onClick={() => { setSearch('hot'); }}
+        >
           Hot
         </Button>
-        <Button colorScheme="gray" onClick={busca}>
+        <Button
+          colorScheme={search === 'new' ? 'primary' : 'gray'}
+          onClick={() => { setSearch('new'); }}
+        >
           News
         </Button>
-        <Button colorScheme="gray" onClick={busca}>
+        <Button
+          colorScheme={search === 'top' ? 'primary' : 'gray'}
+          onClick={() => { setSearch('top'); }}
+        >
           Rising
         </Button>
       </Flex>
       <Flex width="90%" direction="column" margin="auto">
-        <Flex direction="row" borderTop="1px solid gray" paddingY="12px">
-          <Box
-            borderRadius="16px"
-            height="77px"
-            width="77px"
-            backgroundColor="gray.400"
+        {posts.map(({ data }: any) => (
+          <Post
+            title={data.title}
+            author={data.author}
+            domain={data.domain}
           />
-          <Flex
-            direction="column"
-            justifyContent="space-between"
-            marginLeft="13px"
-          >
-            <Box>Titulo</Box>
-            <Box>Data</Box>
-            <Box>Dominio</Box>
-          </Flex>
-        </Flex>
-        <Button onClick={busca} width="100%">Busca</Button>
+        ))}
+        <Button onClick={loadMore} width="100%">
+          Busca
+        </Button>
       </Flex>
     </Box>
   );
