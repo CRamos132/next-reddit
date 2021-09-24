@@ -1,3 +1,4 @@
+import { Box, Flex, Button } from '@chakra-ui/react';
 import type { NextPage } from 'next';
 
 const Home: NextPage = () => {
@@ -6,9 +7,10 @@ const Home: NextPage = () => {
       .then((res) => res.json());
   };
   return (
-    <div>
-      <button type="button" onClick={busca}>Manda</button>
-    </div>
+    <Box width="100%">
+      <Flex width="100%" backgroundColor="#6324C6" height="91px" direction="row" justifyContent="center" alignItems="center">REACTJS</Flex>
+      <Button onClick={busca}>Busca</Button>
+    </Box>
   );
 };
 
