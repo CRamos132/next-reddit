@@ -57,6 +57,7 @@ const Home: NextPage = () => {
             title={data.title}
             author={data.author}
             domain={data.domain}
+            url={data.url}
           />
         ))}
         <Button

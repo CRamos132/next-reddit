@@ -1,19 +1,25 @@
 import React from 'react';
-import { Heading, HeadingProps } from '@chakra-ui/react';
+import Link from '../Link';
 
-interface IProps extends HeadingProps {
+interface IProps {
     children: React.ReactNode;
+    to: string;
 }
 
-export default function Title({ children, ...props }: IProps) {
+export default function Title({ children, to }: IProps) {
   return (
-    <Heading
+    <Link
+      href={to}
       color="black"
-      as="h1"
       fontSize="20px"
-      {...props}
+      target="_blank"
+      textOverflow="ellipsis"
+      overflow="hidden"
+      whiteSpace="nowrap"
+      maxW={['60vw', '60vw', '80vw']}
     >
       {children}
-    </Heading>
+
+    </Link>
   );
 }

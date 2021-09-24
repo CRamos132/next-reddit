@@ -7,9 +7,12 @@ interface IProps {
     title: string;
     author: string;
     domain: string;
+    url: string;
 }
 
-export default function Post({ author, title, domain }: IProps) {
+export default function Post({
+  author, title, domain, url,
+}: IProps) {
   return (
     <Flex direction="row" borderTop="1px solid gray" paddingY="12px">
       <Box
@@ -23,15 +26,8 @@ export default function Post({ author, title, domain }: IProps) {
         justifyContent="space-between"
         marginLeft="13px"
       >
-        <Title
-          textOverflow="ellipsis"
-          overflow="hidden"
-          whiteSpace="nowrap"
-          maxW={['60vw', '60vw', '80vw']}
-          title={title}
-        >
+        <Title to={url}>
           {title}
-
         </Title>
         <Typography color="#4C5667">
           Criado por
