@@ -18,13 +18,13 @@ interface TPostsContext {
     posts: Post[],
     fetchNextPage: () => void,
     refetch: () => void,
-    error: string,
+    error: boolean,
     isLoading: boolean,
     hasNextPage: boolean,
 }
 
 const PostsContext = createContext<TPostsContext>({
-  error: '',
+  error: false,
   fetchNextPage: () => null,
   isLoading: false,
   posts: [],
@@ -34,7 +34,7 @@ const PostsContext = createContext<TPostsContext>({
 });
 
 function PostsProvider({ children }: {children: ReactNode}) {
-  const [error, setError] = useState('');
+  const [error, setError] = useState(false);
   const { query } = useRouter();
   const toast = useToast();
 
@@ -54,14 +54,14 @@ function PostsProvider({ children }: {children: ReactNode}) {
         https://www.reddit.com/r/reactjs/${search}.json?after=${pageParam}
     `)
       .then((res) => {
-        setError('');
-        if (res.ok) {
-          return res.json();
-        }
-        throw new Error(res.statusText);
+        setError(false);
+        return res.json();
+      })
+      .catch((err) => {
+        throw new Error(err);
       }),
     {
-      onError: (err: any) => {
+      onError: () => {
         toast({
           title: 'Algo deu errado.',
           description: 'Por favor tente novamente mais tarde.',
@@ -70,11 +70,7 @@ function PostsProvider({ children }: {children: ReactNode}) {
           duration: 9000,
           isClosable: true,
         });
-        if (err?.message) {
-          setError(err?.message);
-          return;
-        }
-        setError(JSON.stringify(err));
+        setError(true);
       },
       getNextPageParam: (lastPage) => lastPage?.data.after,
     },

@@ -6,7 +6,7 @@ import Button from 'components/atoms/Button';
 import Post from 'components/molecules/Post';
 import LoadingSection from 'components/organisms/LoadingSection';
 import PageNav from 'components/molecules/PageNav';
-import ErrorText from 'components/atoms/ErrorText';
+import RefetchButton from 'components/atoms/RefetchButton';
 
 const Home: NextPage = () => {
   const {
@@ -28,7 +28,7 @@ const Home: NextPage = () => {
           />
         ))}
         {isLoading && <LoadingSection />}
-        {error && !isLoading && <ErrorText text={error} />}
+        {error && !isLoading && <RefetchButton onClick={refetch} />}
         <Button
           onClick={fetchNextPage}
           isDisabled={!hasNextPage}
