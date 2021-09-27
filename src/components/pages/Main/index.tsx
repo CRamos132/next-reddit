@@ -1,12 +1,12 @@
 import type { NextPage } from 'next';
 import { Box, Flex } from '@chakra-ui/react';
-import { usePosts } from 'contexts/PostsContext';
-import Header from 'components/atoms/Header';
-import Button from 'components/atoms/Button';
-import Post from 'components/molecules/Post';
-import LoadingSection from 'components/organisms/LoadingSection';
-import NavControl from 'components/molecules/NavControl';
-import RefetchButton from 'components/atoms/RefetchButton';
+import { usePosts } from '../../../contexts/PostsContext';
+import Header from '../../atoms/Header';
+import Button from '../../atoms/Button';
+import Post from '../../molecules/Post';
+import LoadingSection from '../../organisms/LoadingSection';
+import NavControl from '../../molecules/NavControl';
+import RefetchButton from '../../atoms/RefetchButton';
 
 const Home: NextPage = () => {
   const {

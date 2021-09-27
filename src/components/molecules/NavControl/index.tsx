@@ -1,6 +1,6 @@
 import { Flex } from '@chakra-ui/react';
 import { useRouter } from 'next/dist/client/router';
-import Button from 'components/atoms/Button';
+import Button from '../../atoms/Button';
 
 interface IProps {
     refetch: () => void;

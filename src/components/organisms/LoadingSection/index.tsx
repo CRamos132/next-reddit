@@ -1,4 +1,4 @@
-import LoadingPost from 'components/molecules/LoadingPost';
+import LoadingPost from '../../molecules/LoadingPost';
 
 export default function LoadingSection() {
   return (
