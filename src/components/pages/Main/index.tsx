@@ -24,6 +24,8 @@ const Home: NextPage = () => {
             domain={data.domain}
             url={data.url}
             image={data.thumbnail}
+            date={data.created}
+            postLink={data.permalink}
           />
         ))}
         {isLoading && <LoadingSection />}
