@@ -1,7 +1,8 @@
 import { useRouter } from 'next/dist/client/router';
 import {
-  createContext, ReactNode, useContext, useMemo,
+  createContext, ReactNode, useContext, useMemo, useState,
 } from 'react';
+import { useToast } from '@chakra-ui/react';
 import { useInfiniteQuery } from 'react-query';
 
 interface Post {
@@ -17,13 +18,13 @@ interface TPostsContext {
     posts: Post[],
     fetchNextPage: () => void,
     refetch: () => void,
-    error: unknown,
+    error: string,
     isLoading: boolean,
     hasNextPage: boolean,
 }
 
 const PostsContext = createContext<TPostsContext>({
-  error: null,
+  error: '',
   fetchNextPage: () => null,
   isLoading: false,
   posts: [],
@@ -33,14 +34,15 @@ const PostsContext = createContext<TPostsContext>({
 });
 
 function PostsProvider({ children }: {children: ReactNode}) {
+  const [error, setError] = useState('');
   const { query } = useRouter();
+  const toast = useToast();
 
   const { param } = query;
   const search = param || 'hot';
 
   const {
     data,
-    error,
     fetchNextPage,
     refetch,
     isLoading,
@@ -51,9 +53,29 @@ function PostsProvider({ children }: {children: ReactNode}) {
     async ({ pageParam = '' }) => fetch(`
         https://www.reddit.com/r/reactjs/${search}.json?after=${pageParam}
     `)
-      .then((res) => res.json()),
+      .then((res) => {
+        setError('');
+        if (res.ok) {
+          return res.json();
+        }
+        throw new Error(res.statusText);
+      }),
     {
-      getNextPageParam: (lastPage) => lastPage.data.after,
+      onError: (err: any) => {
+        toast({
+          title: 'Algo deu errado.',
+          description: 'Por favor tente novamente mais tarde.',
+          status: 'error',
+          duration: 9000,
+          isClosable: true,
+        });
+        if (err?.message) {
+          setError(err?.message);
+          return;
+        }
+        setError(JSON.stringify(err));
+      },
+      getNextPageParam: (lastPage) => lastPage?.data.after,
     },
   );
 
