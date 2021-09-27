@@ -1,8 +1,8 @@
-import React from 'react';
+import { ReactNode } from 'react';
 import Link from '../Link';
 
 interface IProps {
-    children: React.ReactNode;
+    children: ReactNode;
     to: string;
 }
 

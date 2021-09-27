@@ -1,4 +1,5 @@
 import { Box, Flex } from '@chakra-ui/react';
+import getTimeDifference from '../../../helpers/getTimeDifference';
 import Link from '../../atoms/Link';
 import Title from '../../atoms/Title';
 import Typography from '../../atoms/Typography';
@@ -12,31 +13,7 @@ interface IProps {
     date: number;
     postLink: string;
 }
-function timeDiffCalc(date: number) {
-  const dateFuture = new Date(date);
-  const dateNow = new Date();
-  let diffInMilliSeconds = Math.abs(dateFuture.getTime() - dateNow.getTime()) / 1000;
 
-  // calculate days
-  const days = Math.floor(diffInMilliSeconds / 86400);
-  diffInMilliSeconds -= days * 86400;
-
-  // calculate hours
-  const hours = Math.floor(diffInMilliSeconds / 3600) % 24;
-  diffInMilliSeconds -= hours * 3600;
-
-  // calculate minutes
-  const minutes = Math.floor(diffInMilliSeconds / 60) % 60;
-  diffInMilliSeconds -= minutes * 60;
-  if (days > 0) {
-    return (days === 1) ? `${days} dia` : `${days} dias`;
-  }
-  if (hours > 0) {
-    return (hours === 0 || hours === 1) ? `${hours} hora` : `${hours} horas`;
-  }
-
-  return (minutes === 0 || hours === 1) ? `${minutes} minuto` : `${minutes} minutos`;
-}
 export default function Post({
   author, title, domain, url, image, date, postLink,
 }: IProps) {
@@ -61,7 +38,7 @@ export default function Post({
         <Typography color="#4C5667">
           enviado há
           {' '}
-          {timeDiffCalc(date * 1000)}
+          {getTimeDifference(date * 1000)}
           {' '}
           por
           {' '}

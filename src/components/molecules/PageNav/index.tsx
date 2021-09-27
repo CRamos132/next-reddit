@@ -7,10 +7,12 @@ interface IProps {
     search: string | string[]
 }
 
-// hot, new, rising
-
 export default function PageNav({ search, refetch }: IProps) {
   const { push } = useRouter();
+  const pushAndRefetch = (url: string) => {
+    push(url);
+    refetch();
+  };
   return (
     <Flex
       direction="row"
@@ -23,8 +25,7 @@ export default function PageNav({ search, refetch }: IProps) {
       <Button
         colorScheme={search === 'hot' ? 'primary' : 'gray'}
         onClick={() => {
-          push('/hot');
-          refetch();
+          pushAndRefetch('/hot');
         }}
       >
         Hot
@@ -32,8 +33,7 @@ export default function PageNav({ search, refetch }: IProps) {
       <Button
         colorScheme={search === 'new' ? 'primary' : 'gray'}
         onClick={() => {
-          push('/new');
-          refetch();
+          pushAndRefetch('/new');
         }}
       >
         News
@@ -41,8 +41,7 @@ export default function PageNav({ search, refetch }: IProps) {
       <Button
         colorScheme={search === 'rising' ? 'primary' : 'gray'}
         onClick={() => {
-          push('/rising');
-          refetch();
+          pushAndRefetch('/rising');
         }}
       >
         Rising

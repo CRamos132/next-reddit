@@ -1,11 +1,7 @@
 import { Button as ChakraButton, ButtonProps } from '@chakra-ui/react';
-import { ReactNode } from 'react';
+import { PropsWithChildren } from 'react';
 
-interface IProps extends ButtonProps {
-    children?: ReactNode
-}
-
-export default function Button({ children, ...props }: IProps) {
+export default function Button({ children, ...props }: PropsWithChildren<ButtonProps>) {
   return (
     <ChakraButton
       colorScheme="primary"

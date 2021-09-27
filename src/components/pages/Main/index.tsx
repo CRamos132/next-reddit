@@ -19,6 +19,7 @@ const Home: NextPage = () => {
       <Flex width="90%" direction="column" margin="auto">
         {posts?.map(({ data }: any) => (
           <Post
+            key={data.id}
             title={data.title}
             author={data.author}
             domain={data.domain}
