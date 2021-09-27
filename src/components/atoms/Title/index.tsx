@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import Link from '../Link';
+import Link from 'components/atoms/Link';
 
 interface IProps {
     children: ReactNode;

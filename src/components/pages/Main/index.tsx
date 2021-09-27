@@ -1,11 +1,11 @@
 import type { NextPage } from 'next';
 import { Box, Flex } from '@chakra-ui/react';
-import { usePosts } from '../../../contexts/PostsContext';
-import Header from '../../atoms/Header';
-import Button from '../../atoms/Button';
-import Post from '../../molecules/Post';
-import LoadingSection from '../../organisms/LoadingSection';
-import PageNav from '../../molecules/PageNav';
+import { usePosts } from 'contexts/PostsContext';
+import Header from 'components/atoms/Header';
+import Button from 'components/atoms/Button';
+import Post from 'components/molecules/Post';
+import LoadingSection from 'components/organisms/LoadingSection';
+import PageNav from 'components/molecules/PageNav';
 
 const Home: NextPage = () => {
   const {
@@ -20,13 +20,9 @@ const Home: NextPage = () => {
         {posts?.map(({ data }: any) => (
           <Post
             key={data.id}
-            title={data.title}
-            author={data.author}
-            domain={data.domain}
-            url={data.url}
             image={data.thumbnail}
-            date={data.created}
             postLink={data.permalink}
+            {...data}
           />
         ))}
         {isLoading && <LoadingSection />}

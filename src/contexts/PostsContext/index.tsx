@@ -46,8 +46,9 @@ function PostsProvider({ children }: {children: ReactNode}) {
     isFetching,
   } = useInfiniteQuery(
     search,
-    // eslint-disable-next-line max-len
-    async ({ pageParam = '' }) => fetch(`https://www.reddit.com/r/reactjs/${search}.json?after=${pageParam}`)
+    async ({ pageParam = '' }) => fetch(`
+        https://www.reddit.com/r/reactjs/${search}.json?after=${pageParam}
+    `)
       .then((res) => res.json()),
     {
       getNextPageParam: (lastPage) => lastPage.data.after ?? '',

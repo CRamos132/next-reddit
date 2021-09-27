@@ -1,6 +1,6 @@
 import { Flex } from '@chakra-ui/react';
 import { useRouter } from 'next/dist/client/router';
-import Button from '../../atoms/Button';
+import Button from 'components/atoms/Button';
 
 interface IProps {
     refetch: () => void;
@@ -10,8 +10,8 @@ interface IProps {
 export default function PageNav({ search, refetch }: IProps) {
   const { push } = useRouter();
   const pushAndRefetch = (url: string) => {
-    push(url);
     refetch();
+    push(url);
   };
   return (
     <Flex
