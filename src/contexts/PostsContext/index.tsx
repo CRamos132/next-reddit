@@ -1,6 +1,6 @@
 import { useRouter } from 'next/dist/client/router';
 import {
-  useEffect, useState, createContext, ReactNode, useContext,
+  useEffect, useState, createContext, ReactNode, useContext, useMemo,
 } from 'react';
 import { useInfiniteQuery } from 'react-query';
 
@@ -32,7 +32,7 @@ const PostsContext = createContext<TPostsContext>({
 
 function PostsProvider({ children }: {children: ReactNode}) {
   const { query } = useRouter();
-  const [posts, setPosts] = useState<any[]>([]);
+  //   const [posts, setPosts] = useState<any[]>([]);
 
   const { param } = query;
   const search = param || 'hot';
@@ -55,10 +55,8 @@ function PostsProvider({ children }: {children: ReactNode}) {
     },
   );
 
-  useEffect(() => {
-    const array = data?.pages.map((page) => page.data.children).flat();
-    setPosts(array as any[]);
-  }, [data]);
+  const posts = useMemo(() => data?.pages.map((page) => page.data.children).flat() || [],
+    [data]);
 
   const loading = isLoading || isFetching;
 
