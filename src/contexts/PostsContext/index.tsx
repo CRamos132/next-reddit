@@ -1,6 +1,6 @@
 import { useRouter } from 'next/dist/client/router';
 import {
-  useEffect, useState, createContext, ReactNode, useContext, useMemo,
+  createContext, ReactNode, useContext, useMemo,
 } from 'react';
 import { useInfiniteQuery } from 'react-query';
 
@@ -32,7 +32,6 @@ const PostsContext = createContext<TPostsContext>({
 
 function PostsProvider({ children }: {children: ReactNode}) {
   const { query } = useRouter();
-  //   const [posts, setPosts] = useState<any[]>([]);
 
   const { param } = query;
   const search = param || 'hot';

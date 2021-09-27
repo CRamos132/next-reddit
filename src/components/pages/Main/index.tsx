@@ -22,6 +22,7 @@ const Home: NextPage = () => {
             key={data.id}
             image={data.thumbnail}
             postLink={data.permalink}
+            date={data.created}
             {...data}
           />
         ))}
