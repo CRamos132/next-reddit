@@ -5,7 +5,7 @@ import Header from 'components/atoms/Header';
 import Button from 'components/atoms/Button';
 import Post from 'components/molecules/Post';
 import LoadingSection from 'components/organisms/LoadingSection';
-import PageNav from 'components/molecules/PageNav';
+import NavControl from 'components/molecules/NavControl';
 import RefetchButton from 'components/atoms/RefetchButton';
 
 const Home: NextPage = () => {
@@ -16,7 +16,7 @@ const Home: NextPage = () => {
   return (
     <Box width="100%" paddingBottom="32px">
       <Header />
-      <PageNav search={search} refetch={refetch} />
+      <NavControl search={search} refetch={refetch} />
       <Flex width="90%" direction="column" margin="auto">
         {posts?.map(({ data }: any) => (
           <Post

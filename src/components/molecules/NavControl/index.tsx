@@ -7,7 +7,7 @@ interface IProps {
     search: string | string[]
 }
 
-export default function PageNav({ search, refetch }: IProps) {
+export default function NavControl({ search, refetch }: IProps) {
   const { push } = useRouter();
   const pushAndRefetch = (url: string) => {
     refetch();
