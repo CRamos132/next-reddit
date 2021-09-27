@@ -8,10 +8,11 @@ interface IProps {
     author: string;
     domain: string;
     url: string;
+    image?: string;
 }
 
 export default function Post({
-  author, title, domain, url,
+  author, title, domain, url, image,
 }: IProps) {
   return (
     <Flex direction="row" borderTop="1px solid gray" paddingY="12px">
@@ -20,6 +21,8 @@ export default function Post({
         height="77px"
         width="77px"
         backgroundColor="gray.400"
+        backgroundImage={image}
+        backgroundSize="contain"
       />
       <Flex
         direction="column"
