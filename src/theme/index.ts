@@ -16,6 +16,11 @@ const theme = extendTheme({
           900: '#0d021c',
         },
   },
+  fonts: {
+    body: 'Mulish, sans-serif',
+    text: 'Mulish, sans-serif',
+    heading: 'Mulish, sans-serif',
+  },
 });
 
 export default theme;
