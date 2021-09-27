@@ -1,8 +1,8 @@
 import { Box, Flex } from '@chakra-ui/react';
-import Link from 'components/atoms/Link';
-import Title from 'components/atoms/Title';
-import Typography from 'components/atoms/Typography';
-import getTimeDifference from 'helpers/getTimeDifference';
+import Link from '../../atoms/Link';
+import Title from '../../atoms/Title';
+import Typography from '../../atoms/Typography';
+import getTimeDifference from '../../../helpers/getTimeDifference';
 
 interface IProps {
     title: string;
