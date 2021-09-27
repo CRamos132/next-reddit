@@ -33,7 +33,7 @@ const Home: NextPage = () => {
           width="100%"
           isLoading={isLoading}
         >
-          Busca
+          + Ver mais
         </Button>
       </Flex>
     </Box>
