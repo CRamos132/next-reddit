@@ -66,6 +66,7 @@ function PostsProvider({ children }: {children: ReactNode}) {
           title: 'Algo deu errado.',
           description: 'Por favor tente novamente mais tarde.',
           status: 'error',
+          position: 'top',
           duration: 9000,
           isClosable: true,
         });
