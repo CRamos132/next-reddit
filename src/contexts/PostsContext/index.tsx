@@ -12,13 +12,14 @@ interface Post {
     thumbnail: string;
 }
 
-type TPostsContext = {
+interface TPostsContext {
     search: string | string[],
     posts: Post[],
     fetchNextPage: () => void,
     refetch: () => void,
     error: unknown,
     isLoading: boolean,
+    hasNextPage: boolean,
 }
 
 const PostsContext = createContext<TPostsContext>({
@@ -28,6 +29,7 @@ const PostsContext = createContext<TPostsContext>({
   posts: [],
   refetch: () => null,
   search: '',
+  hasNextPage: true,
 });
 
 function PostsProvider({ children }: {children: ReactNode}) {
@@ -43,6 +45,7 @@ function PostsProvider({ children }: {children: ReactNode}) {
     refetch,
     isLoading,
     isFetching,
+    hasNextPage,
   } = useInfiniteQuery(
     search,
     async ({ pageParam = '' }) => fetch(`
@@ -50,9 +53,11 @@ function PostsProvider({ children }: {children: ReactNode}) {
     `)
       .then((res) => res.json()),
     {
-      getNextPageParam: (lastPage) => lastPage.data.after ?? '',
+      getNextPageParam: (lastPage) => lastPage.data.after,
     },
   );
+
+  const nextPageAvailable = hasNextPage || false;
 
   const posts = useMemo(() => data?.pages.map((page) => page.data.children).flat() || [],
     [data]);
@@ -67,6 +72,7 @@ function PostsProvider({ children }: {children: ReactNode}) {
       isLoading: loading,
       posts,
       search,
+      hasNextPage: nextPageAvailable,
     }}
     >
       {children}

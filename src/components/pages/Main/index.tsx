@@ -9,7 +9,7 @@ import PageNav from 'components/molecules/PageNav';
 
 const Home: NextPage = () => {
   const {
-    posts, fetchNextPage, refetch, search, isLoading,
+    posts, fetchNextPage, refetch, search, isLoading, hasNextPage,
   } = usePosts();
 
   return (
@@ -28,9 +28,8 @@ const Home: NextPage = () => {
         ))}
         {isLoading && <LoadingSection />}
         <Button
-          onClick={() => {
-            fetchNextPage();
-          }}
+          onClick={fetchNextPage}
+          isDisabled={!hasNextPage}
           width="100%"
           isLoading={isLoading}
         >
