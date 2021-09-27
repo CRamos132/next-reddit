@@ -7,6 +7,18 @@ import TestWrapper from '../../atoms/TestWraper';
 
 const mockFunction = jest.fn(() => null);
 
+jest.mock('next/router', () => ({
+  useRouter() {
+    return {
+      route: '',
+      pathname: '',
+      query: '',
+      asPath: '',
+      push: () => null,
+    };
+  },
+}));
+
 const setup = () => {
   const utils = render(
     <TestWrapper>
