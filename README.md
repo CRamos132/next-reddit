@@ -33,9 +33,9 @@ Will install all the dependencies of the project
 
 Will start the project on the [browser](http://localhost:3000)
 
-### `yarn cypress`
+### `yarn test`
 
-Will open the test suite, you must have the project running locally to run the tests.
+Will run the test suite
 
 
 ### Contact me
