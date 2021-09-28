@@ -19,6 +19,7 @@ The deployed project can be found [here](https://next-reddit.vercel.app/)
 - [Atomic Design](https://github.com/danilowoz/react-atomic-design)
 - [ESLint](https://eslint.org/)
 - [React Testing Library](https://testing-library.com/)
+- [Storybook](https://storybook.js.org/)
 
 
 ## Project instructions
@@ -37,6 +38,9 @@ Will start the project on the [browser](http://localhost:3000)
 
 Will run the test suite
 
+### `yarn storybook`
+
+Will open the Storybook page with the components
 
 ### Contact me
 
