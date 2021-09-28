@@ -60,11 +60,6 @@ const posts: IPost[] = [
 ];
 
 describe('The PostList component', () => {
-  it('displays message when no posts are passed', () => {
-    const { getByText } = setup();
-    const component = getByText('Não encontramos posts para mostrar');
-    expect(component).toBeInTheDocument();
-  });
   it('displays correct amount of posts', () => {
     const { getAllByTestId } = setup(posts);
     const component = getAllByTestId('post');

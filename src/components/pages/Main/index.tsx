@@ -18,7 +18,7 @@ const Home: NextPage = () => {
       <Header />
       <NavControl search={search} refetch={refetch} />
       <Flex width="90%" direction="column" margin="auto">
-        {!isLoading && <PostList posts={posts} />}
+        <PostList posts={posts} />
         {isLoading && <LoadingSection />}
         {error && !isLoading && <RefetchButton onClick={refetch} />}
         <Button

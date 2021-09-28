@@ -51,7 +51,7 @@ function PostsProvider({ children }: {children: ReactNode}) {
     fetchNextPage,
     refetch,
     isLoading,
-    isFetching,
+    isFetchingNextPage,
     hasNextPage,
   } = useInfiniteQuery(
     search,
@@ -86,7 +86,7 @@ function PostsProvider({ children }: {children: ReactNode}) {
   const posts = useMemo(() => data?.pages.map((page) => page.data.children).flat() || [],
     [data]);
 
-  const loading = isLoading || isFetching;
+  const loading = isFetchingNextPage || isLoading;
 
   return (
     <PostsContext.Provider value={{
