@@ -5,7 +5,7 @@ import {
 import { useToast } from '@chakra-ui/react';
 import { useInfiniteQuery } from 'react-query';
 
-interface Post {
+export interface IPost {
     title: string;
     author: string;
     domain: string;
@@ -15,7 +15,7 @@ interface Post {
 
 interface TPostsContext {
     search: string | string[],
-    posts: Post[],
+    posts: IPost[],
     fetchNextPage: () => void,
     refetch: () => void,
     error: boolean,
