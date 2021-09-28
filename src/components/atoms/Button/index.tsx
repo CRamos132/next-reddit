@@ -6,6 +6,7 @@ export default function Button({ children, ...props }: PropsWithChildren<ButtonP
     <ChakraButton
       colorScheme="primary"
       width="202px"
+      maxWidth="25vw"
       {...props}
     >
       {children}

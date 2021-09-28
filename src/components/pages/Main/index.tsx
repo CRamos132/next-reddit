@@ -25,6 +25,7 @@ const Home: NextPage = () => {
           onClick={fetchNextPage}
           isDisabled={!hasNextPage}
           width="100%"
+          maxWidth="100vw"
           isLoading={isLoading}
         >
           + Ver mais

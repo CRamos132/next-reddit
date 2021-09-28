@@ -19,7 +19,7 @@ export default function NavControl({ search, refetch }: IProps) {
       direction="row"
       alignItems="center"
       justifyContent="space-evenly"
-      width={['80%', '60%']}
+      width={['90%', '60%']}
       marginY="21px"
       marginX="auto"
     >
