@@ -1,34 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next Reddit
 
-## Getting Started
+This is a project developed with [React](https://pt-br.reactjs.org/), [NextJS](https://nextjs.org/) and [Typescript](https://www.typescriptlang.org/)
+to query and list posts from the [ReactJS reddit page](https://www.reddit.com/r/reactjs).
+The project was structured to use [Atomic Design](https://github.com/danilowoz/react-atomic-design) as the base for folder structuring.
 
-First, run the development server:
+The deployed project can be found [here](https://next-reddit.vercel.app/)
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+![Project homepage](https://user-images.githubusercontent.com/56564029/135121941-b53d5c8c-31e5-4791-9bb9-49fcfb91a034.png)
+![Mobile version](https://user-images.githubusercontent.com/56564029/135122276-80b4a193-43ef-4563-a311-421b284565d3.png)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tools used in the project
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+- [React.JS](https://pt-br.reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [NextJS](https://nextjs.org/)
+- [ChakraUI](https://chakra-ui.com/)
+- [Reddit API](https://www.reddit.com/dev/api/)
+- [Atomic Design](https://github.com/danilowoz/react-atomic-design)
+- [ESLint](https://eslint.org/)
+- [React Testing Library](https://testing-library.com/)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Project instructions
 
-## Learn More
+To run the project locally after cloning the repository you can use the following comands:
 
-To learn more about Next.js, take a look at the following resources:
+### `yarn install`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Will install all the dependencies of the project
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### `yarn start`
 
-## Deploy on Vercel
+Will start the project on the [browser](http://localhost:3000)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### `yarn cypress`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Will open the test suite, you must have the project running locally to run the tests.
+
+
+### Contact me
+
+- [LinkedIn](https://www.linkedin.com/in/camille-ramos-316abb194/)
