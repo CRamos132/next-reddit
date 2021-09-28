@@ -7,6 +7,7 @@ export default function Button({ children, ...props }: PropsWithChildren<ButtonP
       colorScheme="primary"
       width="202px"
       maxWidth="25vw"
+      color="white"
       {...props}
     >
       {children}

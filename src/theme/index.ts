@@ -15,6 +15,17 @@ const theme = extendTheme({
           800: '#200a44',
           900: '#0d021c',
         },
+    brandGray:
+        {
+          200: '#e9f3fd',
+          300: '#d0d8e3',
+          400: '#b5bdca',
+          500: '#98a3b3',
+          600: '#7c899d',
+          700: '#636f83',
+          800: '#4c5667',
+          900: '#353e4a',
+        },
   },
   fonts: {
     body: 'Mulish, sans-serif',

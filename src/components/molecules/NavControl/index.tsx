@@ -24,7 +24,7 @@ export default function NavControl({ search, refetch }: IProps) {
       marginX="auto"
     >
       <Button
-        colorScheme={search === 'hot' ? 'primary' : 'gray'}
+        colorScheme={search === 'hot' ? 'primary' : 'brandGray'}
         onClick={() => {
           pushAndRefetch('/hot');
         }}
@@ -32,7 +32,7 @@ export default function NavControl({ search, refetch }: IProps) {
         Hot
       </Button>
       <Button
-        colorScheme={search === 'new' ? 'primary' : 'gray'}
+        colorScheme={search === 'new' ? 'primary' : 'brandGray'}
         onClick={() => {
           pushAndRefetch('/new');
         }}
@@ -40,7 +40,7 @@ export default function NavControl({ search, refetch }: IProps) {
         News
       </Button>
       <Button
-        colorScheme={search === 'rising' ? 'primary' : 'gray'}
+        colorScheme={search === 'rising' ? 'primary' : 'brandGray'}
         onClick={() => {
           pushAndRefetch('/rising');
         }}
