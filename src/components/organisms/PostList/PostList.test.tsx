@@ -6,12 +6,13 @@ import { Box } from '@chakra-ui/react';
 import TestWrapper from '../../atoms/TestWraper';
 import PostList from '.';
 import { IPost } from '../../../contexts/PostsContext';
+import posts from '../../../mocks/posts';
 
-const setup = (posts: IPost[] = []) => {
+const setup = (postList: IPost[] = []) => {
   const utils = render(
     <TestWrapper>
       <Box data-testid="wrapper">
-        <PostList posts={posts} />
+        <PostList posts={postList} />
       </Box>
     </TestWrapper>,
   );
@@ -19,45 +20,6 @@ const setup = (posts: IPost[] = []) => {
     ...utils,
   };
 };
-
-const posts: IPost[] = [
-  {
-    data: {
-      author: 'author 1',
-      domain: 'self.reactjs',
-      thumbnail: 'test.url',
-      title: 'Test Post',
-      url: 'www',
-      id: '1',
-      created: 0,
-      permalink: '',
-    },
-  },
-  {
-    data: {
-      author: 'author 2',
-      domain: 'self.reactjs',
-      thumbnail: 'test.url',
-      title: 'Test Post 2',
-      url: 'www',
-      id: '2',
-      created: 0,
-      permalink: '',
-    },
-  },
-  {
-    data: {
-      author: 'author 3',
-      domain: 'self.reactjs',
-      thumbnail: 'test.url',
-      title: 'Test Post 3',
-      url: 'www',
-      id: '3',
-      created: 0,
-      permalink: '',
-    },
-  },
-];
 
 describe('The PostList component', () => {
   it('displays correct amount of posts', () => {
