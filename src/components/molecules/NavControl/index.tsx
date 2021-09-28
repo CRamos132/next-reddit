@@ -8,10 +8,10 @@ interface IProps {
 }
 
 export default function NavControl({ search, refetch }: IProps) {
-  const router = useRouter();
+  const { push } = useRouter();
   const pushAndRefetch = (url: string) => {
     refetch();
-    router.push(url);
+    push(url);
   };
   return (
     <Flex
