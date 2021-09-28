@@ -26,7 +26,7 @@ export default function PostList({ posts }: IProps) {
   }
   return (
     <>
-      {posts?.map(({ data }: any) => (
+      {posts?.map(({ data }) => (
         <Post
           key={data.id}
           image={data.thumbnail}

@@ -19,7 +19,7 @@ export default function Post({
 }: IProps) {
   const bgImage = image === 'self' ? '/no-image.jpg' : image;
   return (
-    <Flex direction="row" borderTop="1px solid gray" paddingY="12px">
+    <Flex direction="row" borderTop="1px solid gray" paddingY="12px" data-testid="post">
       <Box
         borderRadius="16px"
         height="77px"

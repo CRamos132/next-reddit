@@ -6,11 +6,16 @@ import { useToast } from '@chakra-ui/react';
 import { useInfiniteQuery } from 'react-query';
 
 export interface IPost {
-    title: string;
-    author: string;
-    domain: string;
-    url: string;
-    thumbnail: string;
+    data: {
+        title: string;
+        author: string;
+        domain: string;
+        url: string;
+        thumbnail: string;
+        id: string;
+        permalink: string;
+        created: number;
+    }
 }
 
 interface TPostsContext {

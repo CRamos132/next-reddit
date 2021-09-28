@@ -28,4 +28,10 @@ describe('The NavControl component', () => {
     expect(button2).toBeInTheDocument();
     expect(button3).toBeInTheDocument();
   });
+  it('calls the function onClick', () => {
+    const { getByText } = setup();
+    const button = getByText('Hot');
+    button.click();
+    expect(mockFunction).toHaveBeenCalledTimes(1);
+  });
 });
