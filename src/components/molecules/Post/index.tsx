@@ -17,6 +17,7 @@ interface IProps {
 export default function Post({
   author, title, domain, url, image, date, postLink,
 }: IProps) {
+  const bgImage = image === 'self' ? '/no-image.jpg' : image;
   return (
     <Flex direction="row" borderTop="1px solid gray" paddingY="12px">
       <Box
@@ -24,7 +25,7 @@ export default function Post({
         height="77px"
         width="77px"
         backgroundColor="gray.400"
-        backgroundImage={image}
+        backgroundImage={bgImage}
         backgroundSize="contain"
       />
       <Flex
