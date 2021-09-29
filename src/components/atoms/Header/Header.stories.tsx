@@ -3,7 +3,7 @@ import TestWrapper from '../TestWraper';
 import Header from './index';
 
 export default {
-  title: 'atoms/Button',
+  title: 'atoms/Header',
   component: Header,
   argTypes: {},
 } as Meta;
