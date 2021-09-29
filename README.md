@@ -20,6 +20,7 @@ The deployed project can be found [here](https://next-reddit.vercel.app/)
 - [ESLint](https://eslint.org/)
 - [React Testing Library](https://testing-library.com/)
 - [Storybook](https://storybook.js.org/)
+- [PWA](https://web.dev/progressive-web-apps/)
 
 
 ## Project instructions
